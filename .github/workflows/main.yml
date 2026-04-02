@@ -18,17 +18,17 @@ jobs:
       - name: 🏗️ Setup Tools
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y ffmpeg -qq
+          sudo apt-get install -y ffmpeg aria2 -qq
           pip install -q yt-dlp curl_cffi huggingface_hub
 
-      - name: ⬇️ Smart & Secure Download (Balanced Mode)
+      - name: ⬇️ Smart & Secure Download (Turbo Mode)
         run: |
           yt-dlp --impersonate chrome \
                  --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" \
                  --retries 15 \
                  --fragment-retries 15 \
-                 --concurrent-fragments 3 \
-                 --sleep-requests 0.2 \
+                 --concurrent-fragments 5 \
+                 --sleep-requests 0.1 \
                  --skip-unavailable-fragments \
                  --ignore-errors \
                  --continue \
